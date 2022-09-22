@@ -23,19 +23,32 @@
 /*Задача 21. Напишите программу, которая принимает на вход координаты
 двух точеки находит расстояние между ними в 3D пространстве.*/
 
-Console.Write("Введите координату х точки А: ");
-int Ax = int.Parse(Console.ReadLine());
-Console.Write("Введите координату y точки А: ");
-int Ay = int.Parse(Console.ReadLine());
-Console.Write("Введите координату z точки А: ");
-int Az = int.Parse(Console.ReadLine());
+// Console.Write("Введите координату х точки А: ");
+// int Ax = int.Parse(Console.ReadLine());
+// Console.Write("Введите координату y точки А: ");
+// int Ay = int.Parse(Console.ReadLine());
+// Console.Write("Введите координату z точки А: ");
+// int Az = int.Parse(Console.ReadLine());
 
-Console.Write("Введите координату х точки B: ");
-int Bx = int.Parse(Console.ReadLine());
-Console.Write("Введите координату y точки B: ");
-int By = int.Parse(Console.ReadLine());
-Console.Write("Введите координату z точки B: ");
-int Bz = int.Parse(Console.ReadLine());
+// Console.Write("Введите координату х точки B: ");
+// int Bx = int.Parse(Console.ReadLine());
+// Console.Write("Введите координату y точки B: ");
+// int By = int.Parse(Console.ReadLine());
+// Console.Write("Введите координату z точки B: ");
+// int Bz = int.Parse(Console.ReadLine());
 
-double result = Math.Sqrt(Math.Pow(Bx-Ax,2)+Math.Pow(By-Ay,2)+Math.Pow(Bz-Az,2));
-Console.WriteLine($"Расстояние между точками А и В: {result:f2}");
+// double result = Math.Sqrt(Math.Pow(Bx-Ax,2)+Math.Pow(By-Ay,2)+Math.Pow(Bz-Az,2));
+// Console.WriteLine($"Расстояние между точками А и В: {result:f2}");
+
+/*Задача 23. Напишите программу, которая принимает на вход 
+число (N) и выдаёт таблицу кубов чисел от 1 до N.*/
+
+Console.Write("Введите число N: ");
+int N = int.Parse(Console.ReadLine());
+
+Console. Write($"Таблица кубов чисел от 1 до N: ");
+for (int index = 1; index<=N; index++)
+{
+    double result = Math.Pow(index,3);
+    Console. Write($"{result} ");
+}
