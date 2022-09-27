@@ -9,10 +9,18 @@ int number = int.Parse(Console.ReadLine());
 Console.Write("Введите степень числа: ");
 int num = int.Parse(Console.ReadLine());
 
+Console.WriteLine($"{number} в степени {num}: {GetStepen(num)}");
+
+int GetStepen (int stepen)
+{
 int result = 1;
-for (int index = 1; index <=num; index++)
+for (int index = 1; index <=stepen; index++)
 {
     result = result * number;
 }
+    return result;
+}
+/*Задача 27: Напишите программу, которая принимает 
+на вход число и выдаёт сумму цифр в числе.*/
 
-Console.WriteLine($"{number} в степени {num}: {result}");
+
