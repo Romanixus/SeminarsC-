@@ -1,38 +1,39 @@
 ﻿Console.Clear();
 
 int[,] array = GetArray(10, 20, -99, 100);
-int distanceBetweenColumns = 6;
-int indentArray = 1;
+int distanceBetweenColumns = 6; //Расстояние между столбцами
+int indentArray = 1; //Расстояние перед массивом
 Console.WriteLine("Двумерный массив: ");
 PrintArray(array);
 
 /*Задача 54: Задайте двумерный массив. Напишите программу, которая 
 упорядочит по убыванию элементы каждой строки двумерного массива.*/
 
-Console.WriteLine("Упорядоченный массив: ");
-int minValue = -999999;
-DecreasingArray(array);
+Console.WriteLine("Упорядоченные элементы: ");
+int minValue = -999999; //Минимальное число в массиве (меньше можно, больше нельзя)
+int[,] minValues = (int[,])array.Clone(); //Копия массива, в которой все элементы будут minValue
+DecreasingArray(minValues); 
 
-void DecreasingArray(int[,] array)
+void DecreasingArray(int[,] minValues) 
 {
-    for (int x = 0; x < array.GetLength(0); x++)
+    for (int row = 0; row < minValues.GetLength(0); row++) //Переход на следующий ряд
     {
-        for (int j = 0; j < array.GetLength(1); j++)
+        for (int j = 0; j < minValues.GetLength(1); j++)
         {
             int max = minValue;
             int index = 0;
-            for (int i = 0; i < array.GetLength(0); i++)
+            for (int i = 0; i < minValues.GetLength(0); i++)
             {
-                if (array[i, j] > max)
+                if (minValues[i, j] > max)
                 {
-                    max = array[i, j];
+                    max = minValues[i, j];
                     index = i;
                 }
             }
-            Console.SetCursorPosition(x * distanceBetweenColumns, j + array.GetLength(1) + indentArray * 2);
+            Console.SetCursorPosition(row * distanceBetweenColumns, j + minValues.GetLength(1) + indentArray * 2);
             if (max >= 0) Console.Write(" ");
             Console.WriteLine(max);
-            array[index, j] = minValue;
+            minValues[index, j] = minValue; // Уменьшение максимального элемента в ряду
         }
     }
 }
