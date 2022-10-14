@@ -67,46 +67,88 @@
 
 /*Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.*/
 
-int[,] matrix1 = GetArray(2, 2, 0, 5);
-int[,] matrix2 = GetArray(2, 2, 0, 5);
-int[,] matrix3 = GetArray(2, 2, 0, 10);
+// int[,] matrix1 = GetArray(2, 2, 0, 5);
+// int[,] matrix2 = GetArray(2, 2, 0, 5);
+// int[,] matrix3 = GetArray(2, 2, 0, 10);
 
-Console.WriteLine("Первая матрица: ");
-PrintArray(matrix1);
-Console.WriteLine("Вторая матрица: ");
-PrintArray(matrix2);
+// Console.WriteLine("Первая матрица: ");
+// PrintArray(matrix1);
+// Console.WriteLine("Вторая матрица: ");
+// PrintArray(matrix2);
 
- matrix3[0, 0] = matrix1[0, 0] * matrix2[0, 0] + matrix1[1, 0] * matrix2[0, 1];
- matrix3[1, 0] = matrix1[0, 0] * matrix2[1, 0] + matrix1[1, 0] * matrix2[1, 1];
- matrix3[0, 1] = matrix1[0, 0] * matrix2[0, 1] + matrix1[0, 1] * matrix2[1, 1];
- matrix3[1, 1] = matrix1[0, 1] * matrix2[1, 0] + matrix1[1, 1] * matrix2[1, 1];
+//  matrix3[0, 0] = matrix1[0, 0] * matrix2[0, 0] + matrix1[1, 0] * matrix2[0, 1];
+//  matrix3[1, 0] = matrix1[0, 0] * matrix2[1, 0] + matrix1[1, 0] * matrix2[1, 1];
+//  matrix3[0, 1] = matrix1[0, 0] * matrix2[0, 1] + matrix1[0, 1] * matrix2[1, 1];
+//  matrix3[1, 1] = matrix1[0, 1] * matrix2[1, 0] + matrix1[1, 1] * matrix2[1, 1];
 
-Console.WriteLine("Произведение двух матриц: ");
-PrintArray(matrix3);
+// Console.WriteLine("Произведение двух матриц: ");
+// PrintArray(matrix3);
+
+// int[,] GetArray(int columns, int rows, int minValue, int maxValue)
+// {
+//     int[,] array = new int[columns, rows];
+//     for (int i = 0; i < columns; i++)
+//     {
+//         for (int j = 0; j < rows; j++)
+//         {
+//             array[i, j] = new Random().Next(minValue, maxValue);
+//         }
+//     }
+//     return array;
+// }
+
+// void PrintArray(int[,] array)
+// {
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             // Console.SetCursorPosition(i * distanceBetweenColumns, j + indentArray);
+//             if (array[i, j] >= 0) Console.Write(" ");
+//             Console.Write(array[i, j]);
+//         }
+//         Console.WriteLine();
+//     }
+// }
+
+/*Задача 60. Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите 
+программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.*/
+
+int count = 10;
+int[,,] array3d = Get3DArray(3, 4, 6);
+
+if (count > 99) Console.WriteLine("Массив слишком большой");
+else Print3DArray(array3d);
 
 
-int[,] GetArray(int columns, int rows, int minValue, int maxValue)
+int[,,] Get3DArray(int layers, int rows, int columns)
 {
-    int[,] array = new int[columns, rows];
-    for (int i = 0; i < columns; i++)
+    int[,,] array = new int[layers, rows, columns];
+    for (int i = 0; i < layers; i++)
     {
         for (int j = 0; j < rows; j++)
         {
-            array[i, j] = new Random().Next(minValue, maxValue);
+            for (int u = 0; u < columns; u++)
+            {
+                array[i, j, u] = count;
+                count++;
+            }
         }
     }
     return array;
 }
 
-void PrintArray(int[,] array)
+void Print3DArray(int[,,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            // Console.SetCursorPosition(i * distanceBetweenColumns, j + indentArray);
-            if (array[i, j] >= 0) Console.Write(" ");
-            Console.Write(array[i, j]);
+            for (int u = 0; u < array.GetLength(2); u++)
+            {
+                Console.Write($"{array[i, j, u]}({i},{j},{u}) ");
+            }
+            Console.WriteLine();
         }
         Console.WriteLine();
     }
